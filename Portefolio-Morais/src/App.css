@@ -1,0 +1,249 @@
+/* =========================================
+   ESTILOS GLOBAIS E UTILITÁRIOS
+   ========================================= */
+
+html {
+    scroll-behavior: smooth; /* Mantém a navegação suave ao clicar nos links */
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* O Gradiente Mágico (Usado no nome e nos títulos das secções) */
+.hero__name-gradient {
+    background: linear-gradient(to right, #2563eb, #9333ea, #db2777);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+/* =========================================
+   COMPONENTE: NAVBAR (Desktop)
+   ========================================= */
+
+.navbar {
+    backdrop-filter: blur(8px); /* Adicionado um pequeno blur estilo Apple */
+
+}
+
+:root {
+  --navbar-height: 64px;
+}
+
+.navbar__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: linear-gradient(to right, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+
+@media (min-width: 768px) {
+    .navbar__menu {
+        display: flex;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .navbar__toggle {
+        display: none;
+    }
+}
+
+
+/* =========================================
+   COMPONENTE: MOBILE MENU
+   ========================================= */
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none; 
+}
+
+.mobile-menu.is-open {
+    display: flex;
+}
+
+.mobile-menu__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.mobile-menu__panel {
+    position: relative;
+    width: 256px;
+    background-color: white;
+    height: 100%;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+}
+
+.mobile-menu__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu__title {
+    font-weight: 700;
+    font-size: 1.125rem;
+    background: linear-gradient(to right, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.mobile-menu__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #111827;
+}
+
+.mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+}
+
+.mobile-menu__link {
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: #4b5563;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu__link:hover {
+    background-color: #f3f4f6;
+}
+
+
+/* =========================================
+   COMPONENTE: HERO SECTION
+   ========================================= */
+
+.hero {
+    /* O padding-top compensa a altura da navbar fixa para não esconder o título */
+    padding: 140px 20px 80px 20px;
+    background: radial-gradient(circle at 10% 20%, rgba(235, 240, 255, 0.8) 0%, rgba(255, 255, 255, 0) 40%),
+                radial-gradient(circle at 90% 10%, rgba(245, 235, 255, 0.8) 0%, rgba(255, 255, 255, 0) 40%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.hero__container {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hero__title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: #111827;
+}
+
+@media (min-width: 768px) {
+    .hero__title {
+        font-size: 4rem;
+    }
+}
+
+.hero__description {
+    font-size: 1.125rem;
+    color: #4b5563;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+
+/* =========================================
+   COMPONENTE: SKILL CARDS
+   ========================================= */
+
+.skill-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f3f4f6;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 350px;
+}
+
+.skill-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skill-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.skill-card__icon--tech { background-color: #dbeafe; }
+
+.skill-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.skill-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-card__tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.skill-card__tag--blue {
+    background-color: #eff6ff;
+    color: #2563eb;
+}
