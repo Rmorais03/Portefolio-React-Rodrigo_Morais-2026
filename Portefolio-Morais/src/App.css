@@ -1,44 +1,89 @@
-:root{
-    --neon-green: #10b981;
-    --dark-bg: #0a0e14;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --neon-green: #10b981;
+  --dark-bg: #0a0e14;
 }
 
-body{
-    background-color: var(--dark-bg) !important;
+body {
+  background-color: var(--dark-bg) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* NAVBAR SECTION */
-.text-neon{
-    color: var(--neon-green);
+html {
+  scroll-behavior: smooth;
 }
 
-.nav-custom-link{
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease-in-out;
-}
-.nav-custom-link:hover{
-    color: var(--neon-green) !important;
+/* =========================================
+   1. TIPOGRAFIA & UTILITÁRIOS GERAIS
+========================================= */
+h1,
+h2,
+h3,
+.navbar-brand {
+  letter-spacing: -1px;
 }
 
+.text-neon {
+  color: var(--neon-green);
+}
 
-/* HERO SECTION */
-/* Altura mínima para a Hero ocupar o ecrã */
-.hero-section {
-  min-height: 80vh;
+.glow-text {
+  text-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
 }
 
 .text-muted-light {
   color: #a3aed0;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
-/* Efeito de brilho no título */
-.glow-text {
-  text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+/* =========================================
+   2. NAVBAR & GLASSMORPHISM
+========================================= */
+.glass-nav {
+  background: rgba(10, 14, 20, 0.6) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem 0 !important;
 }
 
-/* Botão Preenchido (Verde Neon) */
+.nav-custom-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #a3aed0 !important;
+  letter-spacing: 0.8px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-custom-link:hover {
+  color: var(--neon-green) !important;
+}
+
+.nav-custom-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--neon-green);
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+.nav-custom-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* =========================================
+   3. BOTÕES
+========================================= */
 .btn-neon {
   background-color: var(--neon-green) !important;
   color: #0d1117 !important;
@@ -48,11 +93,11 @@ body{
 }
 
 .btn-neon:hover {
-  background-color: #00d975 !important;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+  background-color: #0ed190 !important;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+  transform: zoom(1.05);
 }
 
-/* Botão Outline */
 .btn-outline-neon {
   background-color: transparent !important;
   color: var(--neon-green) !important;
@@ -62,96 +107,203 @@ body{
 }
 
 .btn-outline-neon:hover {
-  background-color: rgba(0, 255, 136, 0.1) !important;
-  color: var(--neon-green);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: var(--neon-green) !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
   transform: translateY(-2px);
 }
 
-/* Placeholder para o Cubo */
-.cube-placeholder {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  border-radius: 20px;
-  backdrop-filter: blur(5px);
+/* =========================================
+   4. EFEITOS DE FUNDO (HERO)
+========================================= */
+.hero-section {
+  min-height: 90vh;
 }
 
-.shadow-neon {
-  box-shadow: 0 0 40px rgba(0, 255, 136, 0.15);
+.hero-bg-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
 }
 
+.hero-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
 
-/* --- ABOUT SECTION & SKILLS --- */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: floatOrb 15s infinite alternate ease-in-out;
+}
 
-.about-section {
-  padding: 100px 0;
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background-color: var(--neon-green);
+  top: -100px;
+  left: -100px;
+}
+
+.orb-2 {
+  width: 350px;
+  height: 350px;
+  background-color: #064e3b;
+  bottom: -50px;
+  right: -50px;
+  animation-duration: 20s;
+  animation-delay: -5s;
+}
+
+.hero-shape {
+  position: absolute;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  animation: floatShape 20s infinite linear;
+}
+
+.shape-square {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  left: 15%;
+}
+
+.shape-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  bottom: 25%;
+  right: 20%;
+  animation-duration: 25s;
+  animation-direction: reverse;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(100px, 50px) scale(1.2);
+  }
+}
+
+@keyframes floatShape {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-500px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   5. CARTÕES E COMPONENTES (ABOUT & PROJECTS)
+========================================= */
+/* Fundo exclusivo da secção de projetos */
+.bg-darker {
+  background-color: #11151c;
+}
+
+.ambient-glow {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Separador Laser Néon */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+  border: none;
+}
+
+.skill-card,
+.project-card {
+  background-color: #151923;
+  border: 1px solid #262c3d;
+  transition: all 0.3s ease;
+  height: 100%;
 }
 
 .skill-card {
-  background-color: #151923; 
-  border: 1px solid #262c3d;
   border-radius: 12px;
   padding: 1.5rem 1rem;
-  text-align: center;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-}
-
-.skill-card:hover {
-  border-color: var(--neon-green);
-  box-shadow: 0 10px 20px rgba(0, 255, 136, 0.05);
-  transform: translateY(-5px);
-}
-
-.skill-icon {
-  width: 64px !important;
-  height: 64px !important;
-  object-fit: contain;
-  margin-bottom: 15px;
-}
-
-.skill-name {
-  color: #e2e8f0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-/* --- PROJECTS SECTION --- */
-
-.projects-section {
-  padding: 80px 0;
-  background-color: #0b0f14; /* Um tom microscopicamente mais escuro para separar do About */
+  text-align: center;
 }
 
 .project-card {
-  background-color: #151923;
-  border: 1px solid #262c3d;
   border-radius: 16px;
-  overflow: hidden; /* Mantém a imagem dentro dos cantos arredondados */
-  transition: all 0.3s ease;
-  height: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
+.skill-card:hover {
+  border-color: var(--neon-green);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.05);
+  transform: translateY(-5px);
+}
+
 .project-card:hover {
   border-color: var(--neon-green);
+  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.1);
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 255, 136, 0.1);
+}
+
+/* Removemos a margin daqui para usar mb-3 no Bootstrap */
+.skill-icon {
+  width: 64px !important;
+  height: 64px !important;
+  object-fit: contain;
+}
+
+/* Removemos a margin daqui para usar m-0 no Bootstrap */
+.skill-name {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .project-img-wrapper {
   width: 100%;
   height: 220px;
   overflow: hidden;
-  background-color: #2b2b2b; /* Fundo de placeholder caso a imagem não carregue */
+  background-color: #2b2b2b;
 }
 
 .project-img {
@@ -162,16 +314,73 @@ body{
 }
 
 .project-card:hover .project-img {
-  transform: scale(1.08); /* Efeito de zoom suave ao passar o rato */
+  transform: scale(1.08);
 }
 
-/* Tags das Tecnologias */
 .tech-tag {
   font-size: 0.75rem;
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 50px;
-  background: rgba(0, 255, 136, 0.05);
+  background: rgba(16, 185, 129, 0.05);
   color: var(--neon-green);
-  border: 1px solid rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* =========================================
+   6. CONTACT & FOOTER
+========================================= */
+.cta-banner {
+  background: rgba(21, 25, 35, 0.8); 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.3); /* Borda néon suave */
+  border-radius: 24px;
+  padding: 6rem 2rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  margin-bottom: 6rem;
+}
+
+.badge-neon {
+  background-color: rgba(16, 185, 129, 0.08);
+  color: var(--neon-green);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-section {
+  border-top: 1px solid #262c3d;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.footer-link {
+  color: #a3aed0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: var(--neon-green);
+  transform: translateY(-2px);
+}
+
+.footer-icon-wrapper {
+  background-color: #151923;
+  border: 1px solid #262c3d;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

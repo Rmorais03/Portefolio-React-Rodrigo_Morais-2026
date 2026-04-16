@@ -1,18 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 function Navbar() {
+  // Hooks do Framer Motion para controlar o scroll
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  // Evento que dispara sempre que fazemos scroll
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    
+    if (latest > 100 && latest > previous) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-transparent pt-4 pb-4">
+    <motion.nav
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="navbar navbar-expand-lg navbar-dark fixed-top glass-nav"
+    >
       <div className="container">
-      {/* "Logo" */}
-      <a className="navbar-brand fw-bold fs-4" href="#">Rodrigo <span className="text-neon fw-bold fs-4">Morais</span>
-      </a>
-      {/* BOTAO HAMBURGUER (Para Mobile) */}
+        
+        {/* LOGO */}
+        <a className="navbar-brand fw-bold fs-4" href="#">
+          Rodrigo <span className="text-neon">Morais</span>
+        </a>
+        
+        {/* BOTÃO HAMBURGUER (Mobile) */}
         <button 
           className="navbar-toggler" 
           type="button" 
           data-bs-toggle="collapse" 
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +61,9 @@ function Navbar() {
             </li>
           </ul>
         </div>
+        
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 

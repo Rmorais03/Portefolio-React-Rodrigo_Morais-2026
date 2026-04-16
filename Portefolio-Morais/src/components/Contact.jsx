@@ -1,35 +1,43 @@
 import React from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
-export default function Contact() {
+function Contact() {
   return (
-    <section id="contact" className="py-5" style={{ backgroundColor: '#f3f0ff' }}>
-      <Container>
-        <Row className="justify-content-center">
-          <Col md={8} lg={6}>
-            <div className="bg-white p-5 rounded-4 shadow-sm text-start">
-              <h2 className="mb-4 fw-bold">Vamos falar!</h2>
-              <Form>
-                <Form.Group className="mb-3" controlId="formName">
-                  <Form.Label className="fw-semibold text-secondary">Nome</Form.Label>
-                  <Form.Control type="text" placeholder="O teu nome" className="p-3 bg-light border-0" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formEmail">
-                  <Form.Label className="fw-semibold text-secondary">Email</Form.Label>
-                  <Form.Control type="email" placeholder="nome@exemplo.com" className="p-3 bg-light border-0" />
-                </Form.Group>
-                <Form.Group className="mb-4" controlId="formMessage">
-                  <Form.Label className="fw-semibold text-secondary">Mensagem</Form.Label>
-                  <Form.Control as="textarea" rows={4} placeholder="Como te posso ajudar?" className="p-3 bg-light border-0" />
-                </Form.Group>
-                <Button variant="primary" type="submit" className="w-100 rounded-pill py-3 fw-bold" style={{ backgroundColor: '#2563eb', border: 'none' }}>
-                  Enviar Mensagem
-                </Button>
-              </Form>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+    <section id="contact" className="py-5">
+      <div className="container">
+        
+        {/* BANNER CTA ANIMADO */}
+        <motion.div 
+          className="cta-banner text-center mx-auto"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+         
+          
+          <h2 className="display-4 fw-bold text-white mb-2">
+            Available for Summer
+          </h2>
+          <h2 className="display-4 fw-bold text-neon mb-4 glow-text">
+            Internship 2026
+          </h2>
+          
+          <p className="text-muted-light mb-5 fs-5">
+            Looking for opportunities in <span className="text-white fw-bold">Aveiro, Coimbra, Viseu</span>, or <span className="text-white fw-bold">Remote (PT/EN)</span>
+          </p>
+          
+          <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4">
+            <a href="mailto:hello@rodrigomorais.pt" className="btn btn-neon px-5 py-3 fw-bold fs-6">
+              Get in Touch
+            </a>
+          </div>
+          
+        </motion.div>
+        
+      </div>
     </section>
   );
 }
+
+export default Contact;
