@@ -19,8 +19,12 @@ export default function App() {
         <div className="section-divider"></div>
         <Projects />
         <div className="section-divider"></div>
+        
         <Contact />
+        
+        
         <Footer />
+        
       </main>
     </div>
     </>

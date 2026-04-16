@@ -6,7 +6,7 @@ function Footer() {
   const linkedinIcon = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg";
 
   return (
-    <footer className="footer-section ">
+    <footer className="footer-section bg-darker ">
       <div className="container">
         <div className="row gy-4 mb-4 align-items-center">
           
