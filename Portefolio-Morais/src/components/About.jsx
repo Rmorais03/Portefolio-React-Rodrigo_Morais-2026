@@ -73,7 +73,7 @@ function About() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               {skillsData.map((skill) => (
                 <motion.div className="col" key={skill.id} variants={itemVariants}>

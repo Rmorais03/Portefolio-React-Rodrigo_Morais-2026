@@ -39,7 +39,7 @@ function Hero() {
             </div>
 
             {/* CONTEÚDO CENTRAL (Animado com Framer Motion) */}
-            <div className="container position-relative z-1 text-center mt-5">
+            <div className="container position-relative z-1 text-center">
                 <div className="row justify-content-center">
                     <motion.div 
                         className="col-lg-9 col-xl-8"
