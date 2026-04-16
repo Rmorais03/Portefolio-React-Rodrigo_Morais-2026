@@ -23,12 +23,12 @@ function Projects() {
     },
     {
       id: 3,
-      title: "Interactive Weather Hub",
+      title: "Make your own horta",
       description: "A web application fetching real-time API data to display weather forecasts with animated dynamic UI components.",
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop",
       tags: ["React", "API", "CSS Animations"],
       demoLink: "#",
-      codeLink: "#"
+      codeLink: "https://github.com/Rmorais03/Plantify-Oficial"
     }
   ];
 
@@ -72,10 +72,11 @@ function Projects() {
                   
                   {/* Botões/Links */}
                   <div className="d-flex gap-3 mt-auto">
-                    <a href={project.demoLink} className="btn btn-neon px-3 py-1 fw-bold" style={{ fontSize: '0.85rem' }}>
+                    <a href={project.demoLink} className="btn btn-neon px-3 py-1 fw-bold" style={{ fontSize: '0.85rem' }}
+                    target="_blank">
                       Live Demo
                     </a>
-                    <a href={project.codeLink} className="btn btn-outline-neon px-3 py-1 fw-bold" style={{ fontSize: '0.85rem' }}>
+                    <a href={project.codeLink} className="btn btn-outline-neon px-3 py-1 fw-bold" target="_blank" style={{ fontSize: '0.85rem' }}>
                       GitHub
                     </a>
                   </div>
