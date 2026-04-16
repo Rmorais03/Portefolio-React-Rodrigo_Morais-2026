@@ -1,52 +1,94 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
-export default function Projects() {
+function Projects() {
+  // Array com os teus projetos de Dev / UI-UX
   const projectsData = [
     {
-      title: "Booklets de Ginástica",
-      desc: "Design de cadernetas de cromos interativas para um evento de ginástica de verão, focadas no engajamento dos atletas.",
-      img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop"
+      id: 1,
+      title: "Task Management Dashboard",
+      description: "A comprehensive UI/UX prototype for a productivity app, focusing on clean data visualization and seamless user flows.",
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", // Imagem placeholder
+      tags: ["Figma", "UI/UX", "Prototyping"],
+      demoLink: "#",
+      codeLink: "#"
     },
     {
-      title: "Edição de Vídeo",
-      desc: "Trabalhos de edição de vídeo dinâmicos focados em redes sociais e promoção de eventos.",
-      img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600&auto=format&fit=crop"
+      id: 2,
+      title: "E-Commerce Web App",
+      description: "Full stack e-commerce platform built with React and Bootstrap. Features dynamic routing, shopping cart, and responsive design.",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+      tags: ["React", "Bootstrap", "JavaScript"],
+      demoLink: "#",
+      codeLink: "#"
     },
     {
-      title: "Portefólio Web",
-      desc: "Desenvolvimento deste portefólio interativo utilizando React, Bootstrap e CSS customizado.",
-      img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop"
+      id: 3,
+      title: "Interactive Weather Hub",
+      description: "A web application fetching real-time API data to display weather forecasts with animated dynamic UI components.",
+      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop",
+      tags: ["React", "API", "CSS Animations"],
+      demoLink: "#",
+      codeLink: "#"
     }
   ];
 
   return (
-    <section id="projects" className="py-5">
-      <Container>
-        <div className="text-center mb-5">
-          <h2 className="fw-bold hero__name-gradient d-inline-block">Os Meus Projetos</h2>
-        </div>
+    <section id="projects" className="projects-section">
+      <div className="container">
         
-        <Row className="g-4">
-          {/* Usamos um map para gerar os cartões de forma mais limpa */}
-          {projectsData.map((project, index) => (
-            <Col md={4} key={index}>
-              <Card className="h-100 shadow-sm border-0 text-start">
-                <Card.Img variant="top" src={project.img} style={{ height: '200px', objectFit: 'cover' }} />
-                <Card.Body className="p-4">
-                  <Card.Title className="fw-bold fs-5 mb-3">{project.title}</Card.Title>
-                  <Card.Text className="text-muted" style={{ lineHeight: '1.6' }}>
-                    {project.desc}
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer className="bg-white border-0 px-4 pb-4 pt-0">
-                  <Button variant="outline-primary" size="sm" className="rounded-pill px-4">Ver Detalhes</Button>
-                </Card.Footer>
-              </Card>
-            </Col>
+        <div className="text-center mb-5">
+          <h2 className="display-5 fw-bold text-white mb-3">
+            Featured <span className="text-neon">Projects</span>
+          </h2>
+          <p className="text-muted-light max-w-75 mx-auto">
+            A selection of my recent work focusing on frontend development, UI/UX design, and interactive prototypes.
+          </p>
+        </div>
+
+        {/* Grelha de Projetos (1 coluna mobile, 2 tablet, 3 desktop) */}
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {projectsData.map((project) => (
+            <div className="col" key={project.id}>
+              <div className="project-card">
+                
+                {/* Imagem */}
+                <div className="project-img-wrapper">
+                  <img src={project.image} alt={project.title} className="project-img" />
+                </div>
+                
+                {/* Conteúdo do Cartão */}
+                <div className="p-4 d-flex flex-column flex-grow-1">
+                  <h5 className="text-white fw-bold mb-3">{project.title}</h5>
+                  <p className="text-muted-light flex-grow-1" style={{ fontSize: '0.9rem' }}>
+                    {project.description}
+                  </p>
+                  
+                  {/* Tags */}
+                  <div className="d-flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, index) => (
+                      <span key={index} className="tech-tag">{tag}</span>
+                    ))}
+                  </div>
+                  
+                  {/* Botões/Links */}
+                  <div className="d-flex gap-3 mt-auto">
+                    <a href={project.demoLink} className="btn btn-neon px-3 py-1 fw-bold" style={{ fontSize: '0.85rem' }}>
+                      Live Demo
+                    </a>
+                    <a href={project.codeLink} className="btn btn-outline-neon px-3 py-1 fw-bold" style={{ fontSize: '0.85rem' }}>
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           ))}
-        </Row>
-      </Container>
+        </div>
+
+      </div>
     </section>
   );
 }
+
+export default Projects;
